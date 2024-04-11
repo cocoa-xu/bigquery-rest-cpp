@@ -6,6 +6,16 @@ This is a C++ API for Google BigQuery's REST API. It uses `absl::optional` so th
 ## Usage
 Simply overwrite all files in the `google-cloud-cpp/google/cloud/bigquery/v2/minimal/internal` directory with the files in this repository.
 
+```bash
+$ GOOGLE_CLOUD_CPP_VERSION="2.22.0"
+$ curl -fSL "https://github.com/googleapis/google-cloud-cpp/archive/refs/tags/v${GOOGLE_CLOUD_CPP_VERSION}.tar.gz" -o "v${GOOGLE_CLOUD_CPP_VERSION}.tar.gz"
+$ tar -xzf "v${GOOGLE_CLOUD_CPP_VERSION}.tar.gz"
+$ git clone https://github.com/cocoa-xu/bigquery-rest-cpp.git
+$ cp -r "bigquery-rest-cpp/google/cloud/bigquery/v2/minimal/internal/*" "google-cloud-cpp-${GOOGLE_CLOUD_CPP_VERSION}/google/cloud/bigquery/v2/minimal/internal/"
+```
+
+This repo is based on the v2.22.0 of the `google-cloud-cpp` library. Commit 19a0dbb0ed3cb493fe9f3a9b45689f7a65dace62 contains a clean copy of the original files.
+
 ## Why you made this repo?
 
 Google's implementation of BigQuery's REST API by default sends all fields, which causes problems because the default values are different from `(null)` (literally nothing). 

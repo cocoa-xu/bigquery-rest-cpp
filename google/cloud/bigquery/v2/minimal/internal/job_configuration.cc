@@ -29,7 +29,7 @@ std::string JobConfiguration::DebugString(absl::string_view name,
   auto f = internal::DebugFormatter(name, options, indent);
   if (job_type) f.StringField("job_type", *job_type);
   if (dry_run) f.Field("dry_run", *dry_run);
-  if (job_timeout) f.Field("job_timeout", job_timeout);
+  if (job_timeout) f.Field("job_timeout", *job_timeout);
   if (labels) f.Field("labels", *labels);
   if (query) f.SubMessage("query_config", *query);
   return f.Build();

@@ -29,7 +29,7 @@ std::string JobConfiguration::DebugString(absl::string_view name,
   auto f = internal::DebugFormatter(name, options, indent);
   if (job_type) f.StringField("job_type", *job_type);
   if (dry_run) f.Field("dry_run", *dry_run);
-  f.Field("job_timeout", job_timeout);
+  if (job_timeout) f.Field("job_timeout", job_timeout);
   if (labels) f.Field("labels", *labels);
   if (query) f.SubMessage("query_config", *query);
   return f.Build();
@@ -40,7 +40,7 @@ void to_json(nlohmann::json& j, JobConfiguration const& c) {
   if (c.query) j["query"] = *c.query;
   if (c.dry_run) j["dryRun"] = *c.dry_run;
   if (c.labels) j["labels"] = *c.labels;
-  ToJson(c.job_timeout, j, "jobTimeoutMs");
+  if (c.job_timeout) ToJson(c.job_timeout.value(), j, "jobTimeoutMs");
 }
 void from_json(nlohmann::json const& j, JobConfiguration& c) {
   SafeGetTo(c.job_type, j, "jobType");
@@ -48,7 +48,7 @@ void from_json(nlohmann::json const& j, JobConfiguration& c) {
   SafeGetTo(c.dry_run, j, "dryRun");
   SafeGetTo(c.labels, j, "labels");
 
-  FromJson(c.job_timeout, j, "jobTimeoutMs");
+  FromJson(c.job_timeout.value(), j, "jobTimeoutMs");
 }
 
 GOOGLE_CLOUD_CPP_INLINE_NAMESPACE_END

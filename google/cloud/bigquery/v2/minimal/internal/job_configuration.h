@@ -33,7 +33,7 @@ GOOGLE_CLOUD_CPP_INLINE_NAMESPACE_BEGIN
 struct JobConfiguration {
   absl::optional<std::string> job_type;
   absl::optional<bool> dry_run;
-  std::chrono::milliseconds job_timeout = std::chrono::milliseconds(0);
+  absl::optional<std::chrono::milliseconds> job_timeout;
   absl::optional<std::map<std::string, std::string>> labels;
 
   absl::optional<JobConfigurationQuery> query;

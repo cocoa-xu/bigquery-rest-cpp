@@ -48,7 +48,7 @@ void from_json(nlohmann::json const& j, JobConfiguration& c) {
   SafeGetTo(c.dry_run, j, "dryRun");
   SafeGetTo(c.labels, j, "labels");
 
-  FromJson(c.job_timeout.value(), j, "jobTimeoutMs");
+  FromJson(c.job_timeout, j, "jobTimeoutMs");
 }
 
 GOOGLE_CLOUD_CPP_INLINE_NAMESPACE_END

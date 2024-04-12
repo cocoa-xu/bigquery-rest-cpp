@@ -35,16 +35,36 @@ void ToJson(std::chrono::milliseconds const& field, nlohmann::json& j,
 void ToIntJson(std::chrono::milliseconds const& field, nlohmann::json& j,
                char const* name);
 
+void FromJson(absl::optional<std::chrono::milliseconds>& field, nlohmann::json const& j,
+              char const* name);
+
+void ToJson(absl::optional<std::chrono::milliseconds> const& field, nlohmann::json& j,
+            char const* name);
+void ToIntJson(absl::optional<std::chrono::milliseconds> const& field, nlohmann::json& j,
+               char const* name);
+
 void FromJson(std::chrono::system_clock::time_point& field,
               nlohmann::json const& j, char const* name);
 
 void ToJson(std::chrono::system_clock::time_point const& field,
             nlohmann::json& j, char const* name);
 
+void FromJson(absl::optional<std::chrono::system_clock::time_point>& field,
+              nlohmann::json const& j, char const* name);
+
+void ToJson(absl::optional<std::chrono::system_clock::time_point> const& field,
+            nlohmann::json& j, char const* name);
+
 void FromJson(std::chrono::hours& field, nlohmann::json const& j,
               char const* name);
 
 void ToJson(std::chrono::hours const& field, nlohmann::json& j,
+            char const* name);
+
+void FromJson(absl::optional<std::chrono::hours>& field, nlohmann::json const& j,
+              char const* name);
+
+void ToJson(absl::optional<std::chrono::hours> const& field, nlohmann::json& j,
             char const* name);
 
 // Removes not needed keys and empty arrays and objects from the json
